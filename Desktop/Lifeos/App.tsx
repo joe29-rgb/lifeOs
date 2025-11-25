@@ -1,47 +1,74 @@
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { HealthScreen } from './src/screens/HealthScreen';
+import { BriefingScreen } from './src/screens/BriefingScreen';
+import { DecisionsScreen } from './src/screens/DecisionsScreen';
+import { RelationshipsScreen } from './src/screens/RelationshipsScreen';
+
+const Tab = createBottomTabNavigator();
 
 /**
  * Timeline App Entry Point
- * 
- * This is a placeholder that will be replaced with proper navigation,
- * authentication, and app initialization logic.
+ * Bottom tab navigation for all main features
  */
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Timeline</Text>
-      <Text style={styles.subtitle}>AI-Powered Life Operating System</Text>
-      <Text style={styles.status}>🚧 Foundation Setup Complete 🚧</Text>
+    <NavigationContainer>
       <StatusBar style="auto" />
-    </View>
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false,
+          tabBarActiveTintColor: '#4CAF50',
+          tabBarInactiveTintColor: '#757575',
+          tabBarStyle: {
+            backgroundColor: '#FFFFFF',
+            borderTopWidth: 1,
+            borderTopColor: '#E0E0E0',
+            height: 60,
+            paddingBottom: 8,
+            paddingTop: 8,
+          },
+          tabBarLabelStyle: {
+            fontSize: 12,
+            fontWeight: '600',
+          },
+        }}
+      >
+        <Tab.Screen
+          name="Health"
+          component={HealthScreen}
+          options={{
+            tabBarLabel: 'Health',
+            tabBarIcon: () => null,
+          }}
+        />
+        <Tab.Screen
+          name="Decisions"
+          component={DecisionsScreen}
+          options={{
+            tabBarLabel: 'Decisions',
+            tabBarIcon: () => null,
+          }}
+        />
+        <Tab.Screen
+          name="Relationships"
+          component={RelationshipsScreen}
+          options={{
+            tabBarLabel: 'Relationships',
+            tabBarIcon: () => null,
+          }}
+        />
+        <Tab.Screen
+          name="Briefing"
+          component={BriefingScreen}
+          options={{
+            tabBarLabel: 'Briefing',
+            tabBarIcon: () => null,
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  title: {
-    fontSize: 48,
-    fontWeight: 'bold',
-    color: '#fff',
-    marginBottom: 10,
-  },
-  subtitle: {
-    fontSize: 18,
-    color: '#888',
-    marginBottom: 40,
-    textAlign: 'center',
-  },
-  status: {
-    fontSize: 16,
-    color: '#4CAF50',
-    marginTop: 20,
-  },
-});
