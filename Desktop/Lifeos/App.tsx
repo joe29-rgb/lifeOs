@@ -6,6 +6,7 @@ import { HealthScreen } from './src/screens/HealthScreen';
 import { BriefingScreen } from './src/screens/BriefingScreen';
 import { DecisionsScreen } from './src/screens/DecisionsScreen';
 import { RelationshipsScreen } from './src/screens/RelationshipsScreen';
+import { SimulatorScreen } from './src/screens/SimulatorScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -65,6 +66,14 @@ export default function App() {
           component={BriefingScreen}
           options={{
             tabBarLabel: 'Briefing',
+            tabBarIcon: () => null,
+          }}
+        />
+        <Tab.Screen
+          name="Simulator"
+          component={SimulatorScreen}
+          options={{
+            tabBarLabel: 'Simulator',
             tabBarIcon: () => null,
           }}
         />
