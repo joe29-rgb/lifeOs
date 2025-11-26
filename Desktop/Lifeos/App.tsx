@@ -24,6 +24,9 @@ import { DecisionCheckScreen } from './src/screens/DecisionCheckScreen';
 import { RegretHistoryScreen } from './src/screens/RegretHistoryScreen';
 import { SocialBatteryScreen } from './src/screens/SocialBatteryScreen';
 import { SocialTypeScreen } from './src/screens/SocialTypeScreen';
+import { RelationshipROIScreen } from './src/screens/RelationshipROIScreen';
+import { PersonROIScreen } from './src/screens/PersonROIScreen';
+import { InvestmentScreen } from './src/screens/InvestmentScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -155,6 +158,9 @@ function RootNavigator() {
           <Stack.Screen name="RegretHistory" component={RegretHistoryScreen} />
           <Stack.Screen name="SocialBattery" component={SocialBatteryScreen} />
           <Stack.Screen name="SocialType" component={SocialTypeScreen} />
+          <Stack.Screen name="RelationshipROI" component={RelationshipROIScreen} />
+          <Stack.Screen name="PersonROI" component={PersonROIScreen} />
+          <Stack.Screen name="Investment" component={InvestmentScreen} />
         </>
       )}
     </Stack.Navigator>
