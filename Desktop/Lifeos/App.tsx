@@ -20,6 +20,8 @@ import { EmergencyContactsScreen } from './src/screens/EmergencyContactsScreen';
 import { PastYouScreen } from './src/screens/PastYouScreen';
 import { PastYouInsightsScreen } from './src/screens/PastYouInsightsScreen';
 import { FutureLettersScreen } from './src/screens/FutureLettersScreen';
+import { DecisionCheckScreen } from './src/screens/DecisionCheckScreen';
+import { RegretHistoryScreen } from './src/screens/RegretHistoryScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -147,6 +149,8 @@ function RootNavigator() {
           <Stack.Screen name="EmergencyContacts" component={EmergencyContactsScreen} />
           <Stack.Screen name="PastYouInsights" component={PastYouInsightsScreen} />
           <Stack.Screen name="FutureLetters" component={FutureLettersScreen} />
+          <Stack.Screen name="DecisionCheck" component={DecisionCheckScreen} />
+          <Stack.Screen name="RegretHistory" component={RegretHistoryScreen} />
         </>
       )}
     </Stack.Navigator>
