@@ -1,101 +1,137 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
+import { AppProvider, useApp } from './src/context/AppContext';
+import { HomeScreen } from './src/screens/HomeScreen';
+import { FocusScreen } from './src/screens/FocusScreen';
+import { LifeScreen } from './src/screens/LifeScreen';
 import { HealthScreen } from './src/screens/HealthScreen';
 import { BriefingScreen } from './src/screens/BriefingScreen';
-import { DecisionsScreen } from './src/screens/DecisionsScreen';
-import { RelationshipsScreen } from './src/screens/RelationshipsScreen';
 import { SimulatorScreen } from './src/screens/SimulatorScreen';
 import { IntelligenceDashboard } from './src/screens/IntelligenceDashboard';
 import { InsightsScreen } from './src/screens/InsightsScreen';
+import { SettingsScreen } from './src/screens/SettingsScreen';
+import { OnboardingScreen } from './src/screens/OnboardingScreen';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-/**
- * Timeline App Entry Point
- * Bottom tab navigation for all main features
- */
+function MainTabs() {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: '#4CAF50',
+        tabBarInactiveTintColor: '#757575',
+        tabBarStyle: {
+          backgroundColor: '#FFFFFF',
+          borderTopWidth: 1,
+          borderTopColor: '#E0E0E0',
+          height: 60,
+          paddingBottom: 8,
+          paddingTop: 8,
+        },
+        tabBarLabelStyle: {
+          fontSize: 10,
+          fontWeight: '600',
+        },
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: () => null,
+        }}
+      />
+      <Tab.Screen
+        name="Intelligence"
+        component={IntelligenceDashboard}
+        options={{
+          tabBarLabel: 'Intelligence',
+          tabBarIcon: () => null,
+        }}
+      />
+      <Tab.Screen
+        name="Focus"
+        component={FocusScreen}
+        options={{
+          tabBarLabel: 'Focus',
+          tabBarIcon: () => null,
+        }}
+      />
+      <Tab.Screen
+        name="Life"
+        component={LifeScreen}
+        options={{
+          tabBarLabel: 'Life',
+          tabBarIcon: () => null,
+        }}
+      />
+      <Tab.Screen
+        name="Health"
+        component={HealthScreen}
+        options={{
+          tabBarLabel: 'Health',
+          tabBarIcon: () => null,
+        }}
+      />
+      <Tab.Screen
+        name="Briefing"
+        component={BriefingScreen}
+        options={{
+          tabBarLabel: 'Briefing',
+          tabBarIcon: () => null,
+        }}
+      />
+      <Tab.Screen
+        name="Career"
+        component={SimulatorScreen}
+        options={{
+          tabBarLabel: 'Career',
+          tabBarIcon: () => null,
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          tabBarLabel: 'Settings',
+          tabBarIcon: () => null,
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+function RootNavigator() {
+  const { isOnboarded, loading } = useApp();
+
+  if (loading) {
+    return null;
+  }
+
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      {!isOnboarded ? (
+        <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+      ) : (
+        <Stack.Screen name="Main" component={MainTabs} />
+      )}
+    </Stack.Navigator>
+  );
+}
+
 export default function App() {
   return (
-    <NavigationContainer>
-      <StatusBar style="auto" />
-      <Tab.Navigator
-        screenOptions={{
-          headerShown: false,
-          tabBarActiveTintColor: '#4CAF50',
-          tabBarInactiveTintColor: '#757575',
-          tabBarStyle: {
-            backgroundColor: '#FFFFFF',
-            borderTopWidth: 1,
-            borderTopColor: '#E0E0E0',
-            height: 60,
-            paddingBottom: 8,
-            paddingTop: 8,
-          },
-          tabBarLabelStyle: {
-            fontSize: 12,
-            fontWeight: '600',
-          },
-        }}
-      >
-        <Tab.Screen
-          name="Intelligence"
-          component={IntelligenceDashboard}
-          options={{
-            tabBarLabel: 'Intelligence',
-            tabBarIcon: () => null,
-          }}
-        />
-        <Tab.Screen
-          name="Insights"
-          component={InsightsScreen}
-          options={{
-            tabBarLabel: 'Insights',
-            tabBarIcon: () => null,
-          }}
-        />
-        <Tab.Screen
-          name="Health"
-          component={HealthScreen}
-          options={{
-            tabBarLabel: 'Health',
-            tabBarIcon: () => null,
-          }}
-        />
-        <Tab.Screen
-          name="Decisions"
-          component={DecisionsScreen}
-          options={{
-            tabBarLabel: 'Decisions',
-            tabBarIcon: () => null,
-          }}
-        />
-        <Tab.Screen
-          name="Relationships"
-          component={RelationshipsScreen}
-          options={{
-            tabBarLabel: 'Relationships',
-            tabBarIcon: () => null,
-          }}
-        />
-        <Tab.Screen
-          name="Briefing"
-          component={BriefingScreen}
-          options={{
-            tabBarLabel: 'Briefing',
-            tabBarIcon: () => null,
-          }}
-        />
-        <Tab.Screen
-          name="Simulator"
-          component={SimulatorScreen}
-          options={{
-            tabBarLabel: 'Simulator',
-            tabBarIcon: () => null,
-          }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <AppProvider>
+      <NavigationContainer>
+        <StatusBar style="auto" />
+        <RootNavigator />
+      </NavigationContainer>
+    </AppProvider>
   );
 }
