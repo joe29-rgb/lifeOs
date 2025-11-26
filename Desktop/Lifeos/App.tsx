@@ -17,6 +17,9 @@ import { OnboardingScreen } from './src/screens/OnboardingScreen';
 import { CrisisScreen } from './src/screens/CrisisScreen';
 import { BreathingScreen } from './src/screens/BreathingScreen';
 import { EmergencyContactsScreen } from './src/screens/EmergencyContactsScreen';
+import { PastYouScreen } from './src/screens/PastYouScreen';
+import { PastYouInsightsScreen } from './src/screens/PastYouInsightsScreen';
+import { FutureLettersScreen } from './src/screens/FutureLettersScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -107,6 +110,14 @@ function MainTabs() {
         }}
       />
       <Tab.Screen
+        name="PastYou"
+        component={PastYouScreen}
+        options={{
+          tabBarLabel: 'Past You',
+          tabBarIcon: () => null,
+        }}
+      />
+      <Tab.Screen
         name="Settings"
         component={SettingsScreen}
         options={{
@@ -134,6 +145,8 @@ function RootNavigator() {
           <Stack.Screen name="Main" component={MainTabs} />
           <Stack.Screen name="Breathing" component={BreathingScreen} />
           <Stack.Screen name="EmergencyContacts" component={EmergencyContactsScreen} />
+          <Stack.Screen name="PastYouInsights" component={PastYouInsightsScreen} />
+          <Stack.Screen name="FutureLetters" component={FutureLettersScreen} />
         </>
       )}
     </Stack.Navigator>
