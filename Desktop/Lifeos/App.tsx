@@ -7,6 +7,8 @@ import { BriefingScreen } from './src/screens/BriefingScreen';
 import { DecisionsScreen } from './src/screens/DecisionsScreen';
 import { RelationshipsScreen } from './src/screens/RelationshipsScreen';
 import { SimulatorScreen } from './src/screens/SimulatorScreen';
+import { IntelligenceDashboard } from './src/screens/IntelligenceDashboard';
+import { InsightsScreen } from './src/screens/InsightsScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -37,6 +39,22 @@ export default function App() {
           },
         }}
       >
+        <Tab.Screen
+          name="Intelligence"
+          component={IntelligenceDashboard}
+          options={{
+            tabBarLabel: 'Intelligence',
+            tabBarIcon: () => null,
+          }}
+        />
+        <Tab.Screen
+          name="Insights"
+          component={InsightsScreen}
+          options={{
+            tabBarLabel: 'Insights',
+            tabBarIcon: () => null,
+          }}
+        />
         <Tab.Screen
           name="Health"
           component={HealthScreen}
