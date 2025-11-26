@@ -22,6 +22,8 @@ import { PastYouInsightsScreen } from './src/screens/PastYouInsightsScreen';
 import { FutureLettersScreen } from './src/screens/FutureLettersScreen';
 import { DecisionCheckScreen } from './src/screens/DecisionCheckScreen';
 import { RegretHistoryScreen } from './src/screens/RegretHistoryScreen';
+import { SocialBatteryScreen } from './src/screens/SocialBatteryScreen';
+import { SocialTypeScreen } from './src/screens/SocialTypeScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -151,6 +153,8 @@ function RootNavigator() {
           <Stack.Screen name="FutureLetters" component={FutureLettersScreen} />
           <Stack.Screen name="DecisionCheck" component={DecisionCheckScreen} />
           <Stack.Screen name="RegretHistory" component={RegretHistoryScreen} />
+          <Stack.Screen name="SocialBattery" component={SocialBatteryScreen} />
+          <Stack.Screen name="SocialType" component={SocialTypeScreen} />
         </>
       )}
     </Stack.Navigator>
