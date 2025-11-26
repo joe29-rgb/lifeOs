@@ -14,6 +14,9 @@ import { IntelligenceDashboard } from './src/screens/IntelligenceDashboard';
 import { InsightsScreen } from './src/screens/InsightsScreen';
 import { SettingsScreen } from './src/screens/SettingsScreen';
 import { OnboardingScreen } from './src/screens/OnboardingScreen';
+import { CrisisScreen } from './src/screens/CrisisScreen';
+import { BreathingScreen } from './src/screens/BreathingScreen';
+import { EmergencyContactsScreen } from './src/screens/EmergencyContactsScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -96,6 +99,14 @@ function MainTabs() {
         }}
       />
       <Tab.Screen
+        name="Crisis"
+        component={CrisisScreen}
+        options={{
+          tabBarLabel: 'Crisis',
+          tabBarIcon: () => null,
+        }}
+      />
+      <Tab.Screen
         name="Settings"
         component={SettingsScreen}
         options={{
@@ -119,7 +130,11 @@ function RootNavigator() {
       {!isOnboarded ? (
         <Stack.Screen name="Onboarding" component={OnboardingScreen} />
       ) : (
-        <Stack.Screen name="Main" component={MainTabs} />
+        <>
+          <Stack.Screen name="Main" component={MainTabs} />
+          <Stack.Screen name="Breathing" component={BreathingScreen} />
+          <Stack.Screen name="EmergencyContacts" component={EmergencyContactsScreen} />
+        </>
       )}
     </Stack.Navigator>
   );
