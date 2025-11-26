@@ -27,6 +27,9 @@ import { SocialTypeScreen } from './src/screens/SocialTypeScreen';
 import { RelationshipROIScreen } from './src/screens/RelationshipROIScreen';
 import { PersonROIScreen } from './src/screens/PersonROIScreen';
 import { InvestmentScreen } from './src/screens/InvestmentScreen';
+import { EnergyOptimizationScreen } from './src/screens/EnergyOptimizationScreen';
+import { SmartAlarmScreen } from './src/screens/SmartAlarmScreen';
+import { FutureSelfScreen } from './src/screens/FutureSelfScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -161,6 +164,9 @@ function RootNavigator() {
           <Stack.Screen name="RelationshipROI" component={RelationshipROIScreen} />
           <Stack.Screen name="PersonROI" component={PersonROIScreen} />
           <Stack.Screen name="Investment" component={InvestmentScreen} />
+          <Stack.Screen name="EnergyOptimization" component={EnergyOptimizationScreen} />
+          <Stack.Screen name="SmartAlarm" component={SmartAlarmScreen} />
+          <Stack.Screen name="FutureSelf" component={FutureSelfScreen} />
         </>
       )}
     </Stack.Navigator>
